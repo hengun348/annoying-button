@@ -57,7 +57,11 @@ export class AnnoyingButtonComponent {
 
   onMouseOver() {
     if (!this.animating) {
-      this.state = this.getRandomAnnoyingState(1, 8);
+      if (this.state === 'normal') {
+        this.state  = this.getRandomAnnoyingState(1, 8);
+      } else {
+        this.state = 'normal';
+      }
     }
   }
 
