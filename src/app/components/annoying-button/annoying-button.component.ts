@@ -29,22 +29,22 @@ import {
         transform: 'translate(0,-100%)'
       })),
       state('annoying5', style({
-        transform: 'translate(50%, 50%)'
+        transform: 'translate(75%, 75%)'
       })),
       state('annoying6', style({
-        transform: 'translate(-50%, 50%)'
+        transform: 'translate(-75%, 75%)'
       })),
       state('annoying7', style({
-        transform: 'translate(50%, -50%)'
+        transform: 'translate(75%, -75%)'
       })),
       state('annoying8', style({
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-75%, -75%)'
       })),
       transition('* => *', [
-        animate('0.03s')
+        animate('0.05s')
       ])
     ])
-    ]
+  ]
 })
 export class AnnoyingButtonComponent {
   state: string;
