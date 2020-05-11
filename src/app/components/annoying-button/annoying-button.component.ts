@@ -4,7 +4,8 @@ import {
   state,
   style,
   animate,
-  transition
+  transition,
+  AnimationEvent
 } from '@angular/animations';
 
 @Component({
@@ -40,24 +41,36 @@ import {
         transform: 'translate(-50%, -50%)'
       })),
       transition('* => *', [
-        animate('0.02s')
+        animate('0.03s')
       ])
     ])
     ]
 })
 export class AnnoyingButtonComponent {
   state: string;
+  animating: boolean;
 
   constructor() {
     this.state = 'normal';
+    this.animating = false;
   }
 
   onMouseOver() {
-    this.state = this.getRandomAnnoyingState(1, 8);
+    if (!this.animating) {
+      this.state = this.getRandomAnnoyingState(1, 8);
+    }
   }
 
   getState(): string {
     return this.state;
+  }
+
+  onAnimationEvent(event: AnimationEvent): void {
+    if (event.phaseName === 'start') {
+      this.animating = true;
+    } else if (event.phaseName === 'done') {
+      this.animating = false;
+    }
   }
 
   private getRandomAnnoyingState(min, max): string {

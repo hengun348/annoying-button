@@ -1,1 +1,7 @@
-<button [@avoidMouse]="getState()" mat-raised-button color="primary" (mouseover)="onMouseOver()">Click me!</button>
+<button 
+    [@avoidMouse]="getState()" 
+    mat-raised-button color="primary" 
+    (mouseover)="onMouseOver()"
+    (@avoidMouse.start)="onAnimationEvent($event)"
+    (@avoidMouse.done)="onAnimationEvent($event)"
+    >Click me!</button>
